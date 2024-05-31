@@ -7,8 +7,11 @@ const mongoose = require('mongoose');
 const userRouter = require('./src/user/userRoute');
 const uploadFileRouter = require('./src/uploadFile/uploadRoutes');
 const fileRouter = require('./src/fileHandeling/fileHandeling');
+const eventRouter = require('./src/eventEmitter/eventEmitter');
+const streamRouter = require('./src/stream/stream');
 var cors = require("cors")
 var bodyParser = require('body-parser')
+var status = require("express-status-monitor")
 
 
 
@@ -34,13 +37,17 @@ app.use(bodyParser.json())
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(status())
+
 
 ////////////////////////////////////////
 app.use('/user',userRouter);
 app.use('/file',fileRouter);
 app.use('/upload',uploadFileRouter);
+app.use('/event',eventRouter);
+app.use('/stream',streamRouter);
 
-
+////////////////////////////////////////
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
