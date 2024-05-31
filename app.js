@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const userRouter = require('./src/user/userRoute');
+const uploadFileRouter = require('./src/uploadFile/uploadRoutes');
+const fileRouter = require('./src/fileHandeling/fileHandeling');
 var cors = require("cors")
 var bodyParser = require('body-parser')
 
@@ -35,6 +37,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 ////////////////////////////////////////
 app.use('/user',userRouter);
+app.use('/file',fileRouter);
+app.use('/upload',uploadFileRouter);
 
 
 
