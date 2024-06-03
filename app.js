@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const userRouter = require('./src/user/userRoute');
 const uploadFileRouter = require('./src/uploadFile/uploadRoutes');
 const fileRouter = require('./src/fileHandeling/fileHandeling');
+const mailRouter = require('./src/nodeMailer/mailRoute');
 const eventRouter = require('./src/eventEmitter/eventEmitter');
 const streamRouter = require('./src/stream/stream');
 var cors = require("cors")
@@ -46,6 +47,7 @@ app.use('/file',fileRouter);
 app.use('/upload',uploadFileRouter);
 app.use('/event',eventRouter);
 app.use('/stream',streamRouter);
+app.use('/mail',mailRouter);
 
 ////////////////////////////////////////
 
